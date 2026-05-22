@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import api from '../../api/axios';
@@ -24,8 +23,9 @@ const BUDGETS = [
   'À définir',
 ];
 
+const VP = { once: true, amount: 0.06 };
+
 export default function Devis() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -46,7 +46,7 @@ export default function Devis() {
   };
 
   return (
-    <section id="devis" className="devis" ref={ref}>
+    <section id="devis" className="devis">
       <div className="devis__bg-text" aria-hidden>DEVIS</div>
 
       <div className="container devis__grid">
@@ -54,7 +54,8 @@ export default function Devis() {
         <motion.div
           className="devis__info"
           initial={{ opacity: 0, x: -40 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={VP}
           transition={{ duration: 0.7 }}
         >
           <span className="section-eyebrow">Demande de Devis</span>
@@ -76,8 +77,9 @@ export default function Devis() {
                 key={i}
                 className="devis__feature"
                 initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.3 + i * 0.1 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={VP}
+                transition={{ delay: 0.1 + i * 0.1 }}
               >
                 <span className="devis__feature-icon">{f.icon}</span>
                 <div>
@@ -93,8 +95,9 @@ export default function Devis() {
         <motion.div
           className="devis__form-wrap"
           initial={{ opacity: 0, x: 40 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.15 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={VP}
+          transition={{ duration: 0.7, delay: 0.1 }}
         >
           {sent ? (
             <div className="devis__success">

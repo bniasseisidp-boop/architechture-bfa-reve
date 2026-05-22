@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import api from '../../api/axios';
 import './Realizations.css';
 
 const CATEGORIES = ['Tous', 'Résidentiel', 'Commercial', 'Rénovation', 'Institutionnel'];
+const VP = { once: true, amount: 0.05 };
 
 const PLACEHOLDER_COLORS = [
   '#1a1a2e', '#16213e', '#0f3460', '#1b1b2f',
   '#2c2c54', '#192a56', '#273c75', '#2c3e50',
 ];
 
-function RealCard({ item, index, inView }) {
+function RealCard({ item, index }) {
   const [hovered, setHovered] = useState(false);
   const bg = PLACEHOLDER_COLORS[index % PLACEHOLDER_COLORS.length];
 
@@ -19,8 +19,9 @@ function RealCard({ item, index, inView }) {
     <motion.div
       className="real-card"
       initial={{ opacity: 0, scale: 0.95 }}
-      animate={inView ? { opacity: 1, scale: 1 } : {}}
-      transition={{ delay: index * 0.08, duration: 0.5 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={VP}
+      transition={{ delay: index * 0.07, duration: 0.5 }}
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
     >
@@ -34,7 +35,6 @@ function RealCard({ item, index, inView }) {
             </div>
           )
         }
-
         <AnimatePresence>
           {hovered && (
             <motion.div
@@ -65,7 +65,6 @@ function RealCard({ item, index, inView }) {
 export default function Realizations() {
   const [items, setItems]   = useState([]);
   const [filter, setFilter] = useState('Tous');
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   useEffect(() => {
     api.get('/realizations').then(r => setItems(r.data)).catch(() => {});
@@ -76,12 +75,13 @@ export default function Realizations() {
     : items.filter(i => i.category === filter);
 
   return (
-    <section id="realizations" className="realizations" ref={ref}>
+    <section id="realizations" className="realizations">
       <div className="container">
         <motion.div
           className="realizations__header"
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={VP}
           transition={{ duration: 0.6 }}
         >
           <span className="section-eyebrow">Portfolio</span>
@@ -93,12 +93,13 @@ export default function Realizations() {
           </p>
         </motion.div>
 
-        {/* Filter */}
+        {/* Filters */}
         <motion.div
           className="realizations__filters"
           initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.2, duration: 0.5 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={VP}
+          transition={{ delay: 0.15, duration: 0.5 }}
         >
           {CATEGORIES.map(cat => (
             <button
@@ -116,7 +117,7 @@ export default function Realizations() {
         <motion.div className="realizations__grid" layout>
           <AnimatePresence mode="popLayout">
             {filtered.map((item, i) => (
-              <RealCard key={item.id} item={item} index={i} inView={inView} />
+              <RealCard key={item.id} item={item} index={i} />
             ))}
           </AnimatePresence>
         </motion.div>

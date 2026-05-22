@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { FiPhone, FiMail, FiMapPin, FiSend } from 'react-icons/fi';
@@ -13,8 +12,9 @@ const INFO = [
   { Icon: FiMapPin,label: 'Adresse',      value: 'Derkle, Dakar — Sénégal', href: null },
 ];
 
+const VP = { once: true, amount: 0.06 };
+
 export default function Contact() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   const [loading, setLoading] = useState(false);
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
@@ -32,12 +32,13 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="contact" ref={ref}>
+    <section id="contact" className="contact">
       <div className="container">
         <motion.div
           className="contact__header"
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={VP}
           transition={{ duration: 0.6 }}
         >
           <span className="section-eyebrow">Contact</span>
@@ -51,8 +52,9 @@ export default function Contact() {
           <motion.div
             className="contact__infos"
             initial={{ opacity: 0, x: -30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 0.2, duration: 0.6 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={VP}
+            transition={{ delay: 0.15, duration: 0.6 }}
           >
             {INFO.map(({ Icon, label, value, href }, i) => (
               <div key={i} className="contact__info-card">
@@ -83,8 +85,9 @@ export default function Contact() {
             onSubmit={handleSubmit(onSubmit)}
             noValidate
             initial={{ opacity: 0, x: 30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 0.3, duration: 0.6 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={VP}
+            transition={{ delay: 0.2, duration: 0.6 }}
           >
             <div className="devis__form-row">
               <div className="field">

@@ -1,21 +1,21 @@
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import './Founder.css';
 
-export default function Founder() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15 });
+const VP = { once: true, amount: 0.08 };
 
+export default function Founder() {
   return (
-    <section id="founder" className="founder" ref={ref}>
+    <section id="founder" className="founder">
       <div className="founder__bg-text" aria-hidden>FONDATEUR</div>
 
       <div className="container founder__grid">
         {/* Avatar */}
         <motion.div
           className="founder__visual"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={inView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, scale: 0.92 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={VP}
+          transition={{ duration: 0.7 }}
         >
           <div className="founder__avatar-wrap">
             <div className="founder__avatar">
@@ -43,8 +43,9 @@ export default function Founder() {
         <motion.div
           className="founder__content"
           initial={{ opacity: 0, x: 50 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={VP}
+          transition={{ duration: 0.7, delay: 0.15 }}
         >
           <span className="section-eyebrow" style={{ color: 'var(--red)' }}>Le Fondateur</span>
           <h2 className="section-title" style={{ color: 'var(--black)' }}>

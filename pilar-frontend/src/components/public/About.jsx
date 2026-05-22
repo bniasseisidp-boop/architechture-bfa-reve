@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import './About.css';
 
 const pillars = [
@@ -8,23 +7,20 @@ const pillars = [
   { icon: '◆', title: 'Nos Valeurs', text: 'Intégrité, excellence, innovation et durabilité — les fondations sur lesquelles nous bâtissons chaque projet.' },
 ];
 
-const fadeUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } };
+const VP = { once: true, amount: 0.08 };
 
 export default function About() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15 });
-
   return (
-    <section id="about" className="about" ref={ref}>
-      {/* Background text */}
+    <section id="about" className="about">
       <div className="about__bg-text" aria-hidden>PILAR</div>
 
       <div className="container about__grid">
         {/* Left */}
         <motion.div
           className="about__left"
-          variants={fadeUp}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={VP}
           transition={{ duration: 0.7 }}
         >
           <span className="section-eyebrow">Qui sommes-nous</span>
@@ -43,8 +39,9 @@ export default function About() {
                 key={i}
                 className="about__pillar"
                 initial={{ opacity: 0, x: -20 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ delay: 0.3 + i * 0.15, duration: 0.5 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={VP}
+                transition={{ delay: i * 0.12, duration: 0.5 }}
               >
                 <span className="about__pillar-icon">{p.icon}</span>
                 <div>
@@ -60,8 +57,9 @@ export default function About() {
             className="btn-primary"
             style={{ alignSelf: 'flex-start', marginTop: '2rem' }}
             initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.9 }}
+            whileInView={{ opacity: 1 }}
+            viewport={VP}
+            transition={{ delay: 0.4 }}
             onClick={e => { e.preventDefault(); document.querySelector('#services')?.scrollIntoView({ behavior:'smooth' }); }}
           >
             Découvrir nos services
@@ -72,8 +70,9 @@ export default function About() {
         <motion.div
           className="about__right"
           initial={{ opacity: 0, x: 60 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ delay: 0.2, duration: 0.8 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={VP}
+          transition={{ delay: 0.15, duration: 0.8 }}
         >
           <div className="about__visual">
             <div className="about__card about__card--big">
@@ -98,8 +97,6 @@ export default function About() {
               </div>
             </div>
           </div>
-
-          {/* Red accent line */}
           <div className="about__accent-line" />
         </motion.div>
       </div>

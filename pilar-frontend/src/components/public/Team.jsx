@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import api from '../../api/axios';
 import './Team.css';
 
-function TeamCard({ member, index, inView }) {
+const VP = { once: true, amount: 0.06 };
+
+function TeamCard({ member, index }) {
   return (
     <motion.div
       className={`team-card ${member.is_founder ? 'team-card--founder' : ''}`}
       initial={{ opacity: 0, y: 40 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: index * 0.1 + 0.15, duration: 0.55 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={VP}
+      transition={{ delay: index * 0.1, duration: 0.55 }}
     >
       <div className="team-card__avatar">
         {member.photo_url
@@ -33,19 +35,19 @@ function TeamCard({ member, index, inView }) {
 
 export default function Team() {
   const [members, setMembers] = useState([]);
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   useEffect(() => {
     api.get('/team').then(r => setMembers(r.data)).catch(() => {});
   }, []);
 
   return (
-    <section id="team" className="team" ref={ref}>
+    <section id="team" className="team">
       <div className="container">
         <motion.div
           className="team__header"
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={VP}
           transition={{ duration: 0.6 }}
         >
           <span className="section-eyebrow">Notre Équipe</span>
@@ -59,7 +61,7 @@ export default function Team() {
 
         <div className="team__grid">
           {members.map((m, i) => (
-            <TeamCard key={m.id} member={m} index={i} inView={inView} />
+            <TeamCard key={m.id} member={m} index={i} />
           ))}
         </div>
       </div>

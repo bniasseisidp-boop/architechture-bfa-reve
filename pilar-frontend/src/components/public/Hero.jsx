@@ -226,8 +226,9 @@ export default function Hero() {
             key={i}
             className="hero__stat"
             initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: i * 0.1 + 0.2, duration: 0.6 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ delay: i * 0.1 + 0.1, duration: 0.6 }}
           >
             <div className="hero__stat-number">
               {inView ? <CountUp end={s.value} duration={2.5} /> : '0'}{s.suffix}

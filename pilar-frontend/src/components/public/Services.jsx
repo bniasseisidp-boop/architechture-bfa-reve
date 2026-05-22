@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import api from '../../api/axios';
 import './Services.css';
 
-function ServiceCard({ service, index, inView }) {
+const VP = { once: true, amount: 0.06 };
+
+function ServiceCard({ service, index }) {
   return (
     <motion.div
       className="service-card"
       initial={{ opacity: 0, y: 40 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: index * 0.1 + 0.1, duration: 0.55 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={VP}
+      transition={{ delay: index * 0.1, duration: 0.55 }}
       whileHover={{ y: -8, transition: { duration: 0.25 } }}
     >
       <div className="service-card__icon">{service.icon}</div>
@@ -23,21 +25,21 @@ function ServiceCard({ service, index, inView }) {
 
 export default function Services() {
   const [services, setServices] = useState([]);
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   useEffect(() => {
     api.get('/services').then(r => setServices(r.data)).catch(() => {});
   }, []);
 
   return (
-    <section id="services" className="services" ref={ref}>
+    <section id="services" className="services">
       <div className="services__bg-stripe" aria-hidden />
 
       <div className="container">
         <motion.div
           className="services__header"
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={VP}
           transition={{ duration: 0.6 }}
         >
           <span className="section-eyebrow">Ce que nous faisons</span>
@@ -51,15 +53,16 @@ export default function Services() {
 
         <div className="services__grid">
           {services.map((s, i) => (
-            <ServiceCard key={s.id} service={s} index={i} inView={inView} />
+            <ServiceCard key={s.id} service={s} index={i} />
           ))}
         </div>
 
         <motion.div
           className="services__cta"
           initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.8 }}
+          whileInView={{ opacity: 1 }}
+          viewport={VP}
+          transition={{ delay: 0.3 }}
         >
           <a href="#devis" className="btn-primary"
             onClick={e => { e.preventDefault(); document.querySelector('#devis')?.scrollIntoView({ behavior:'smooth' }); }}>
