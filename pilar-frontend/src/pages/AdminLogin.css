@@ -1,0 +1,91 @@
+.admin-login {
+  min-height: 100vh;
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.admin-login::before {
+  content: 'PILAR';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: 30vw;
+  color: rgba(255,255,255,0.015);
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.admin-login__particles {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(209,43,43,0.04) 0%, transparent 70%);
+}
+
+.admin-login__card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2.5rem;
+  text-align: center;
+}
+.admin-login__logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  margin: 0 auto 1.5rem;
+}
+.admin-login__title {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.4rem;
+}
+.admin-login__sub {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 2rem;
+}
+.admin-login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+}
+.admin-login__form .field label { color: rgba(255,255,255,0.5); }
+.admin-login__form .field input {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.1);
+  color: var(--white);
+}
+.admin-login__form .field input::placeholder { color: rgba(255,255,255,0.25); }
+.admin-login__form .field input:focus {
+  background: rgba(255,255,255,0.08);
+  border-color: var(--red);
+}
+.admin-login__btn {
+  width: 100%;
+  justify-content: center;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+.admin-login__back {
+  display: block;
+  margin-top: 1.5rem;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.3);
+  transition: color 0.2s;
+}
+.admin-login__back:hover { color: rgba(255,255,255,0.7); }

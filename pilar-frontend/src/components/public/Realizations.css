@@ -1,0 +1,160 @@
+.realizations {
+  padding: 8rem 0;
+  background: var(--off-white);
+}
+.realizations__header { margin-bottom: 3rem; }
+.realizations__sub {
+  font-size: 1rem;
+  color: rgba(0,0,0,0.55);
+  margin-top: 0.75rem;
+  max-width: 480px;
+}
+
+/* Filters */
+.realizations__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+}
+.real-filter {
+  position: relative;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.55rem 1.25rem;
+  border-radius: 100px;
+  border: 1.5px solid rgba(0,0,0,0.12);
+  color: rgba(0,0,0,0.55);
+  background: transparent;
+  transition: all 0.25s;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.real-filter:hover { border-color: var(--red); color: var(--red); }
+.real-filter--active { background: var(--black); color: var(--white); border-color: var(--black); }
+.real-filter__dot {
+  width: 6px; height: 6px;
+  background: var(--red);
+  border-radius: 50%;
+}
+
+/* Grid */
+.realizations__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* Card */
+.real-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.3s;
+}
+.real-card:hover { box-shadow: var(--shadow-lg); }
+.real-card__img {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+.real-card__img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.real-card:hover .real-card__img img { transform: scale(1.06); }
+.real-card__placeholder {
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.real-card__placeholder-icon { font-size: 3rem; opacity: 0.5; }
+.real-card__year {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: rgba(255,255,255,0.3);
+}
+
+/* Overlay */
+.real-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.6) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+}
+.real-card__overlay-content { color: white; }
+.real-card__cat {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--red);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.real-card__title-overlay {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+.real-card__desc-overlay {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.5;
+}
+
+/* Card info */
+.real-card__info {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.real-card__tag {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--red);
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.real-card__title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  flex: 1;
+  letter-spacing: 0.02em;
+}
+.real-card__year-badge {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(0,0,0,0.35);
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .realizations__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 580px) {
+  .realizations { padding: 5rem 0; }
+  .realizations__grid { grid-template-columns: 1fr; }
+}

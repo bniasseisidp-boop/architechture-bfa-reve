@@ -1,0 +1,20 @@
+# Laravel
+pilar-backend/vendor/
+pilar-backend/.env
+pilar-backend/database/database.sqlite
+pilar-backend/storage/logs/
+pilar-backend/storage/framework/cache/
+pilar-backend/storage/framework/sessions/
+pilar-backend/storage/framework/views/
+pilar-backend/bootstrap/cache/
+pilar-backend/.phpunit.result.cache
+
+# React / Node
+pilar-frontend/node_modules/
+pilar-frontend/dist/
+pilar-frontend/.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+*.log
