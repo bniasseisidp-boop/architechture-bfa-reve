@@ -1,8 +1,26 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
 import './Hero.css';
+
+/* ── Counter hook (remplace react-countup) ────────── */
+function useCountUp(target, active, duration = 2200) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!active) { setCount(0); return; }
+    let raf;
+    const start = performance.now();
+    const tick = (now) => {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setCount(Math.round(target * eased));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [active, target, duration]);
+  return count;
+}
 
 /* ── Canvas Particle System ─────────────────────── */
 function useParticles(canvasRef) {
@@ -131,6 +149,12 @@ function useTypewriter(phrases) {
   return text;
 }
 
+/* ── StatNum component ──────────────────────────── */
+function StatNum({ value, active }) {
+  const count = useCountUp(value, active);
+  return <>{count}</>;
+}
+
 /* ── Stats ──────────────────────────────────────── */
 const stats = [
   { value: 15, suffix: '+', label: 'Années\nd\'expérience' },
@@ -231,7 +255,7 @@ export default function Hero() {
             transition={{ delay: i * 0.1 + 0.1, duration: 0.6 }}
           >
             <div className="hero__stat-number">
-              {inView ? <CountUp end={s.value} duration={2.5} /> : '0'}{s.suffix}
+              <StatNum value={s.value} active={inView} />{s.suffix}
             </div>
             <div className="hero__stat-label">{s.label}</div>
           </motion.div>
