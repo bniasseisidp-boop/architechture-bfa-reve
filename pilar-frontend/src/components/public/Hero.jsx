@@ -48,7 +48,7 @@ function useParticles(canvasRef) {
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-        ctx.fillStyle = this.isRed ? 'rgba(209,43,43,0.9)' : 'rgba(255,255,255,0.7)';
+        ctx.fillStyle = this.isRed ? 'rgba(209,43,43,0.85)' : 'rgba(30,30,30,0.28)';
         ctx.fill();
       }
     }
@@ -68,8 +68,8 @@ function useParticles(canvasRef) {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            const alpha = (1 - d / 130) * 0.25;
-            ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
+            const alpha = (1 - d / 130) * 0.18;
+            ctx.strokeStyle = `rgba(30,30,30,${alpha})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -201,7 +201,7 @@ export default function Hero() {
             onClick={e => { e.preventDefault(); document.querySelector('#realizations')?.scrollIntoView({ behavior:'smooth' }); }}>
             Voir nos réalisations ↓
           </a>
-          <a href="#devis" className="btn-outline"
+          <a href="#devis" className="hero__btn-secondary"
             onClick={e => { e.preventDefault(); document.querySelector('#devis')?.scrollIntoView({ behavior:'smooth' }); }}>
             Devis gratuit
           </a>
