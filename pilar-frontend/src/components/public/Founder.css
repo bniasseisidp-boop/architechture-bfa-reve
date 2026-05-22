@@ -1,8 +1,10 @@
 .founder {
   position: relative;
   padding: 8rem 0;
-  background: var(--black);
+  background: var(--white);
   overflow: hidden;
+  border-top: 1px solid var(--gray-200);
+  border-bottom: 1px solid var(--gray-200);
 }
 .founder__bg-text {
   position: absolute;
@@ -10,7 +12,7 @@
   transform: translate(-50%, -50%);
   font-family: var(--font-display);
   font-size: clamp(8rem, 18vw, 18rem);
-  color: rgba(255,255,255,0.02);
+  color: rgba(0,0,0,0.025);
   white-space: nowrap;
   user-select: none;
   pointer-events: none;
@@ -74,8 +76,8 @@
 
 /* Quote box */
 .founder__quote-box {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
   border-left: 3px solid var(--red);
   border-radius: var(--radius-sm);
   padding: 1.5rem 1.75rem;
@@ -90,7 +92,7 @@
 }
 .founder__quote-text {
   font-size: 0.95rem;
-  color: rgba(255,255,255,0.65);
+  color: var(--text-body);
   line-height: 1.7;
   font-style: italic;
   margin-bottom: 0.75rem;
@@ -101,7 +103,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
+  color: var(--text-faint);
 }
 
 /* Content */
@@ -122,28 +124,24 @@
 }
 .founder__bio p {
   font-size: 1rem;
-  color: rgba(255,255,255,0.55);
+  color: var(--text-body);
   line-height: 1.75;
 }
-.founder__bio strong { color: var(--white); font-weight: 600; }
-.founder__bio em { color: rgba(255,255,255,0.8); font-style: italic; }
+.founder__bio strong { color: var(--black); font-weight: 700; }
+.founder__bio em { color: var(--gray-700); font-style: italic; }
 
 /* Stats */
 .founder__stats {
   display: flex;
   gap: 2rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255,255,255,0.06);
+  border-top: 1px solid var(--gray-200);
 }
 .founder__stat { display: flex; flex-direction: column; gap: 0.25rem; }
 .founder__stat-num {
   font-family: var(--font-display);
   font-size: 2rem;
-  color: var(--white);
-  background: linear-gradient(135deg, #fff 40%, var(--red) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--black);
 }
 .founder__stat-label {
   font-family: var(--font-heading);
@@ -151,7 +149,7 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
+  color: var(--text-muted);
 }
 
 @media (max-width: 900px) {

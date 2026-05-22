@@ -1,6 +1,7 @@
 .contact {
   padding: 8rem 0;
-  background: var(--white);
+  background: var(--gray-50);
+  border-top: 1px solid var(--gray-200);
 }
 .contact__header { margin-bottom: 3.5rem; }
 .contact__grid {
@@ -17,9 +18,10 @@
   align-items: center;
   gap: 1.25rem;
   padding: 1.25rem 1.5rem;
-  background: var(--gray-card);
-  border: 1px solid var(--gray-light);
+  background: var(--white);
+  border: 1px solid var(--gray-200);
   border-radius: var(--radius);
+  box-shadow: 0 1px 6px rgba(0,0,0,0.04);
   transition: border-color 0.25s, box-shadow 0.25s;
 }
 .contact__info-card:hover {
@@ -91,10 +93,11 @@ a.contact__info-value:hover { color: var(--red); }
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  background: var(--gray-card);
-  border: 1px solid var(--gray-light);
+  background: var(--white);
+  border: 1px solid var(--gray-200);
   border-radius: var(--radius-lg);
   padding: 2.5rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.05);
 }
 .contact__submit {
   width: 100%;

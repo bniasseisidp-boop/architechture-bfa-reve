@@ -1,11 +1,12 @@
 .team {
   padding: 8rem 0;
-  background: var(--gray-soft);
+  background: var(--gray-50);
+  border-top: 1px solid var(--gray-200);
 }
 .team__header { margin-bottom: 3.5rem; }
 .team__sub {
   font-size: 1rem;
-  color: rgba(0,0,0,0.55);
+  color: var(--text-body);
   margin-top: 0.75rem;
   max-width: 480px;
 }
@@ -108,7 +109,7 @@
 }
 .team-card__desc {
   font-size: 0.88rem;
-  color: rgba(0,0,0,0.58);
+  color: var(--text-body);
   line-height: 1.65;
 }
 

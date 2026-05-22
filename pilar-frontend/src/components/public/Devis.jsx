@@ -58,7 +58,7 @@ export default function Devis() {
           transition={{ duration: 0.7 }}
         >
           <span className="section-eyebrow">Demande de Devis</span>
-          <h2 className="section-title text-white">
+          <h2 className="section-title">
             Votre projet,<br /><span className="accent">notre priorité</span>
           </h2>
           <p className="devis__sub">

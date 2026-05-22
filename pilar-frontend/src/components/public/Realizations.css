@@ -1,11 +1,12 @@
 .realizations {
   padding: 8rem 0;
-  background: var(--off-white);
+  background: var(--white);
+  border-top: 1px solid var(--gray-200);
 }
 .realizations__header { margin-bottom: 3rem; }
 .realizations__sub {
   font-size: 1rem;
-  color: rgba(0,0,0,0.55);
+  color: var(--text-body);
   margin-top: 0.75rem;
   max-width: 480px;
 }
@@ -54,10 +55,11 @@
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--white);
-  box-shadow: var(--shadow);
-  transition: box-shadow 0.3s;
+  border: 1px solid var(--gray-200);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  transition: box-shadow 0.3s, transform 0.3s;
 }
-.real-card:hover { box-shadow: var(--shadow-lg); }
+.real-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.1); transform: translateY(-4px); }
 .real-card__img {
   position: relative;
   aspect-ratio: 4/3;
@@ -147,7 +149,7 @@
   font-family: var(--font-heading);
   font-size: 0.8rem;
   font-weight: 600;
-  color: rgba(0,0,0,0.35);
+  color: var(--text-faint);
   flex-shrink: 0;
 }
 

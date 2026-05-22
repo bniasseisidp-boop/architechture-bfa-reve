@@ -8,7 +8,7 @@
   font-family: var(--font-body);
 }
 
-/* ── Sidebar ──────────────────────────────────── */
+/* ── Sidebar — fond gris très sombre / noir ───── */
 .admin-sidebar {
   width: 260px;
   background: var(--black);
@@ -116,12 +116,13 @@
 }
 .admin-sidebar__logout:hover { background: rgba(209,43,43,0.2); color: var(--red); }
 
-/* ── Main ─────────────────────────────────────── */
+/* ── Main — fond blanc avec gris clair ────────── */
 .admin-main {
   flex: 1;
   margin-left: 260px;
   padding: 2.5rem;
   min-height: 100vh;
+  background: var(--gray-50);
 }
 
 /* ── Section ──────────────────────────────────── */
@@ -192,21 +193,21 @@
 /* ── Table ────────────────────────────────────── */
 .admin-table-wrap {
   background: var(--white);
-  border: 1px solid var(--gray-light);
+  border: 1px solid var(--gray-200);
   border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: var(--shadow);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
 }
 .admin-table {
   width: 100%;
   border-collapse: collapse;
 }
 .admin-table__row {
-  border-bottom: 1px solid var(--gray-light);
+  border-bottom: 1px solid var(--gray-100);
   transition: background 0.15s;
 }
 .admin-table__row:last-child { border-bottom: none; }
-.admin-table__row:hover { background: var(--gray-card); }
+.admin-table__row:hover { background: var(--gray-50); }
 .admin-table__row td {
   padding: 1rem 1.25rem;
   font-size: 0.9rem;

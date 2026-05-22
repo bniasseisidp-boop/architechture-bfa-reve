@@ -3,13 +3,14 @@
   padding: 8rem 0;
   background: var(--white);
   overflow: hidden;
+  border-top: 1px solid var(--gray-200);
 }
 .about__bg-text {
   position: absolute;
   top: -0.1em; left: -0.05em;
   font-family: var(--font-display);
   font-size: clamp(12rem, 25vw, 22rem);
-  color: rgba(0,0,0,0.025);
+  color: rgba(0,0,0,0.018);
   line-height: 1;
   user-select: none;
   pointer-events: none;
@@ -27,7 +28,7 @@
 .about__desc {
   font-size: 1.05rem;
   line-height: 1.75;
-  color: rgba(0,0,0,0.65);
+  color: var(--text-body);
   margin: 1.5rem 0 2rem;
   max-width: 500px;
 }
@@ -40,13 +41,13 @@
   gap: 1rem;
   padding: 1.25rem;
   border-radius: var(--radius);
-  border: 1px solid var(--gray-light);
-  background: var(--off-white);
+  border: 1px solid var(--gray-200);
+  background: var(--gray-50);
   transition: var(--transition);
 }
 .about__pillar:hover {
   border-color: var(--red);
-  box-shadow: 0 4px 20px rgba(209,43,43,0.08);
+  box-shadow: 0 4px 20px rgba(209,43,43,0.07);
   transform: translateX(4px);
 }
 .about__pillar-icon {
@@ -61,15 +62,16 @@
   font-weight: 700;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+  color: var(--black);
   margin-bottom: 0.25rem;
 }
 .about__pillar-text {
   font-size: 0.9rem;
-  color: rgba(0,0,0,0.6);
+  color: var(--text-body);
   line-height: 1.6;
 }
 
-/* Right visual */
+/* Right visual — cartes grises sur fond blanc */
 .about__right { position: relative; }
 .about__visual {
   display: grid;
@@ -78,7 +80,6 @@
   gap: 1rem;
 }
 .about__card {
-  background: var(--black);
   border-radius: var(--radius);
   padding: 2rem 1.5rem;
   display: flex;
@@ -87,23 +88,39 @@
   justify-content: center;
   gap: 0.5rem;
   text-align: center;
-  color: var(--white);
   transition: transform var(--transition), box-shadow var(--transition);
+  border: 1px solid var(--gray-200);
 }
-.about__card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.about__card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+
+/* grande carte — gris foncé avec texte blanc */
 .about__card--big {
   grid-column: 1 / 2;
-  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  background: var(--gray-700);
+  color: var(--white);
+  border-color: transparent;
 }
-.about__card--sm { grid-column: span 1; }
-.about__card--red { background: var(--red); }
+/* petite card neutre */
+.about__card--sm {
+  grid-column: span 1;
+  background: var(--gray-100);
+  color: var(--black);
+}
+/* petite card rouge accent */
+.about__card--red {
+  background: var(--red);
+  color: var(--white);
+  border-color: transparent;
+}
+/* card wide — gris très clair */
 .about__card--wide {
   grid-column: 1 / -1;
-  background: var(--off-white);
-  border: 1px solid var(--gray-light);
+  background: var(--white);
+  border: 1px solid var(--gray-200);
   color: var(--black);
   padding: 1.25rem 1.5rem;
 }
+
 .about__card-icon { font-size: 2.5rem; }
 .about__card-num {
   font-family: var(--font-display);
@@ -116,7 +133,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  opacity: 0.75;
+  opacity: 0.7;
 }
 .about__badge {
   display: flex;
@@ -124,7 +141,7 @@
   gap: 1rem;
   font-size: 1.5rem;
 }
-.about__badge strong { font-family: var(--font-heading); font-size: 1rem; }
+.about__badge strong { font-family: var(--font-heading); font-size: 1rem; color: var(--black); }
 
 .about__accent-line {
   position: absolute;

@@ -1,4 +1,4 @@
-.footer { background: var(--black); }
+.footer { background: var(--gray-700); }
 
 .footer__top { padding: 5rem 0 3rem; }
 .footer__grid {
@@ -81,8 +81,9 @@ a.footer__contact-item:hover { color: var(--white); }
 
 /* Bottom */
 .footer__bottom {
-  border-top: 1px solid rgba(255,255,255,0.05);
+  border-top: 1px solid rgba(255,255,255,0.08);
   padding: 1.25rem 0;
+  background: var(--black);
 }
 .footer__bottom-inner {
   display: flex;

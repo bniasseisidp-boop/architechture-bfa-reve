@@ -1,17 +1,28 @@
+/* ── Navbar — transparente sur hero, blanche sur les sections claires ── */
 .navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
   transition: all 0.4s ease;
   padding: 0.75rem 0;
+  /* Sur le hero (fond noir) les liens sont blancs */
 }
+
+/* Dès que l'user scroll, fond blanc propre avec ombre légère */
 .navbar--scrolled {
-  background: rgba(10, 10, 10, 0.96);
+  background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 1px 0 rgba(255,255,255,0.06), 0 4px 24px rgba(0,0,0,0.3);
+  box-shadow: 0 1px 0 var(--gray-200), 0 4px 24px rgba(0,0,0,0.06);
   padding: 0.5rem 0;
 }
+
+/* Les liens deviennent noirs quand la navbar est blanche */
+.navbar--scrolled .navbar__link          { color: var(--gray-600); }
+.navbar--scrolled .navbar__link:hover    { color: var(--black); }
+.navbar--scrolled .navbar__link--active  { color: var(--black); }
+.navbar--scrolled .navbar__burger span   { background: var(--black); }
+
 .navbar__inner {
   max-width: 1280px;
   margin: 0 auto;
@@ -29,8 +40,8 @@
   height: 44px;
   width: auto;
   object-fit: contain;
-  filter: brightness(1.05);
 }
+
 .navbar__links {
   display: flex;
   align-items: center;
@@ -45,13 +56,14 @@
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.75);
+  color: rgba(255,255,255,0.85); /* blanc sur hero */
   padding: 0.5rem 0.75rem;
   border-radius: 4px;
   transition: color 0.2s;
 }
-.navbar__link:hover { color: var(--white); }
-.navbar__link--active { color: var(--white); }
+.navbar__link:hover    { color: var(--white); }
+.navbar__link--active  { color: var(--white); }
+
 .navbar__underline {
   position: absolute;
   bottom: -2px; left: 0; right: 0;
@@ -82,26 +94,27 @@
 .navbar__burger--open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .navbar__burger--open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-/* Mobile menu */
+/* Mobile menu — fond blanc avec texte noir */
 .navbar__mobile {
   position: fixed;
   top: 64px; left: 0; right: 0;
   z-index: 999;
-  background: rgba(10,10,10,0.97);
+  background: var(--white);
   backdrop-filter: blur(20px);
   padding: 1.5rem 2rem 2rem;
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 2px solid var(--gray-200);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
 }
 .navbar__mobile-link {
   font-family: var(--font-heading);
   font-size: 1.3rem;
   font-weight: 700;
-  color: rgba(255,255,255,0.8);
+  color: var(--gray-600);
   text-align: left;
   padding: 0.75rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid var(--gray-100);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   transition: color 0.2s;

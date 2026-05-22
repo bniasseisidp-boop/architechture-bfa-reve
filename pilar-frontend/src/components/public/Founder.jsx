@@ -46,8 +46,8 @@ export default function Founder() {
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <span className="section-eyebrow">Le Fondateur</span>
-          <h2 className="section-title">
+          <span className="section-eyebrow" style={{ color: 'var(--red)' }}>Le Fondateur</span>
+          <h2 className="section-title" style={{ color: 'var(--black)' }}>
             Baye Assane<br /><span className="accent">Niasse</span>
           </h2>
           <div className="founder__role">Fondateur & PDG — Pilar Construction</div>

@@ -40,8 +40,8 @@ export default function Services() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="section-eyebrow text-white">Ce que nous faisons</span>
-          <h2 className="section-title text-white">
+          <span className="section-eyebrow">Ce que nous faisons</span>
+          <h2 className="section-title">
             Nos <span className="accent">Services</span>
           </h2>
           <p className="services__sub">

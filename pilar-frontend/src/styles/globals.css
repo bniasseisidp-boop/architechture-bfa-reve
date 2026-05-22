@@ -1,26 +1,44 @@
 /* ═══════════════════════════════════════════════════
    PILAR CONSTRUCTION — Global Styles
-   Colors: Black #0A0A0A | White #FFFFFF | Red #D12B2B
+   Palette : Blanc · Gris (5 niveaux) · Noir · Rouge
    ═══════════════════════════════════════════════════ */
 
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap');
 
 /* ── Variables ─────────────────────────────────── */
 :root {
-  --black:        #0A0A0A;
-  --black-2:      #111111;
-  --black-soft:   #1A1A1A;
+  /* Core */
+  --black:        #111111;
+  --black-2:      #1C1C1C;
+  --black-soft:   #2A2A2A;
   --white:        #FFFFFF;
-  --off-white:    #F8F8F8;
+
+  /* Rouge accent */
   --red:          #D12B2B;
-  --red-dark:     #AA1F1F;
-  --red-glow:     rgba(209,43,43,0.18);
-  --gray:         #888888;
-  --gray-light:   #E8E8E8;
-  --gray-soft:    #F2F2F0;   /* light grey — sections alternées */
-  --gray-card:    #F6F6F4;   /* grey clair pour les cartes */
-  --border:       rgba(255,255,255,0.08);
-  --border-dark:  rgba(0,0,0,0.08);
+  --red-dark:     #B01E1E;
+  --red-light:    #FCEAEA;
+  --red-glow:     rgba(209,43,43,0.12);
+
+  /* Gris — 5 niveaux du plus clair au plus sombre */
+  --gray-50:   #FAFAFA;   /* fond section alternée, quasi blanc */
+  --gray-100:  #F4F4F4;   /* fond cards, inputs */
+  --gray-200:  #E8E8E8;   /* bordures légères */
+  --gray-300:  #D0D0D0;   /* bordures normales */
+  --gray-400:  #A0A0A0;   /* texte secondaire fort */
+  --gray-500:  #707070;   /* texte secondaire */
+  --gray-600:  #4A4A4A;   /* texte corps */
+  --gray-700:  #2E2E2E;   /* texte foncé */
+
+  /* Aliases lisibles */
+  --bg-page:     var(--white);
+  --bg-alt:      var(--gray-50);
+  --bg-card:     var(--gray-100);
+  --border:      var(--gray-200);
+  --border-mid:  var(--gray-300);
+  --text-main:   var(--black);
+  --text-body:   var(--gray-600);
+  --text-muted:  var(--gray-500);
+  --text-faint:  var(--gray-400);
 
   --font-display: 'Bebas Neue', sans-serif;
   --font-heading: 'Barlow Condensed', sans-serif;
@@ -35,6 +53,14 @@
 
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── Rétro-compatibilité (anciens noms) ─────── */
+  --off-white:   var(--gray-50);
+  --gray-soft:   var(--gray-50);
+  --gray-card:   var(--gray-100);
+  --gray-light:  var(--gray-200);
+  --border-dark: var(--gray-200);
+  --gray:        var(--gray-400);
 }
 
 /* ── Reset ─────────────────────────────────────── */
@@ -56,8 +82,9 @@ input, textarea, select { font-family: inherit; }
 
 /* ── Custom Scrollbar ──────────────────────────── */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--black); }
-::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+::-webkit-scrollbar-track { background: var(--gray-100); }
+::-webkit-scrollbar-thumb { background: var(--gray-300); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--red); }
 
 /* ── Selection ─────────────────────────────────── */
 ::selection { background: var(--red); color: var(--white); }
