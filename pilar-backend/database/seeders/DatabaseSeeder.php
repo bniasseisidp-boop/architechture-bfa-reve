@@ -14,9 +14,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // Admin account
+        // Le mutator Admin::setPasswordAttribute hash automatiquement — passer le texte brut
         Admin::firstOrCreate(
             ['email' => 'moussasene@pilarconstruction.com'],
-            ['name' => 'Baye Assane Niasse', 'password' => Hash::make('pilar@2024')]
+            ['name' => 'Baye Assane Niasse', 'password' => 'pilar@2024']
         );
 
         // Team members
